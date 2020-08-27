@@ -17,7 +17,7 @@ const endPoints = {
 };
 
 export default {
-    getAllPlanets: () => swapi.get(endPoints.getPlanets),
+    getPlanets: (page) => swapi.get(`${endPoints.getPlanets}/?page=${page ? page : 1}`),
     getPlanetByID: (id) => swapi.get(`${endPoints.getPlanets}/${id}`),
     getPlanetByName: (name) => swapi.get(`${endPoints.getPlanets}/?search=${name}`),
 };
