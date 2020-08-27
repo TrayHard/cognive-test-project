@@ -2,7 +2,7 @@
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
  */
-
+const path = require('path');
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
@@ -18,7 +18,6 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-      
       'axios',
     ],
 
@@ -63,6 +62,15 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
+        cfg.module.rules.push({
+          test: /\.pug$/,
+          loader: 'pug-plain-loader'
+        })
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          '@store': path.resolve(__dirname, './src/store'),
+          '@api': path.resolve(__dirname, './src/api'),
+        }
       },
     },
 

@@ -16,7 +16,11 @@
     "quasar": "^1.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0"
+    "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.0.5",
+    "dotenv": "^8.2.0",
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.0.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
