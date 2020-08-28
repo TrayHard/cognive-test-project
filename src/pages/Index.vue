@@ -1,29 +1,31 @@
 <template lang="pug">
     q-page.flex.justify-center
-        .wrapper.shadow-5
+        .wrapper.shadow-5.bg-grey-10.full-height
             .header.q-pa-xl
                 .text-h3 Звёздные Войны
                 .text-h5 Планеты
             .body
                 q-table(
                     densed
+                    class="sticky-table"
                     :data="planets"
                     :filter="table.filter"
                     :columns="table.columns"
+                    rows-per-page-label="Планет на странице"
                     :rows-per-page-options="table.pagination.perPageOptions"
                     :pagination.sync="table.pagination"
+                    no-data-label="Не найдено данных"
                     :loading="table.loading"
                     row-key="name"
                     binary-state-sort
                 )
                     template(v-slot:top-right)
-                        q-input(borderless dense debounce="300" v-model="table.filter" placeholder="Search")
+                        q-input(borderless dense debounce="300" v-model="table.filter" placeholder="Поиск")
                         q-icon(slot="append" name="search")
                     template(v-slot:no-data="{ icon, message, filter }")
-                        .full-width.row.flex-center.text-accent.q-gutter-sm
-                            q-icon(size="2em" name="sentiment_dissatisfied")
-                            span {{ message }}
+                        .full-width.row.flex-center.q-gutter-sm
                             q-icon(size="2em" :name="filter ? 'filter_b_and_w' : icon")
+                            span {{ message }}
                     template(v-slot:header="props")
                         q-tr(:props="props")
                             q-th(auto-width)
@@ -149,9 +151,8 @@ export default {
 
 <style lang="sass">
     .wrapper
-        max-width: 900px
-        min-width: 900px
-        
+        max-width: $main-width
+        min-width: $main-width
         .header
             max-height: 184px
             min-height: 184px
@@ -159,4 +160,25 @@ export default {
             background-position-y: 20%
             background-position-x: 50%
             font-family: ProximaThin, sans-serif
+        .body
+            .sticky-table
+                /* height or max-height is important */
+                height: calc(100vh - 254px)
+
+                .q-table__top,
+                .q-table__bottom,
+                thead tr:first-child th
+                    /* bg color is important for th; just specify one */
+                    background-color: rgb(29,29,29)
+
+                thead tr th
+                    position: sticky
+                    z-index: 1
+                thead tr:first-child th
+                    top: 0
+
+                /* this is when the loading indicator appears */
+                &.q-table--loading thead tr:last-child th
+                    /* height of all previous header rows */
+                    top: 48px
 </style>

@@ -2,7 +2,12 @@
     q-layout
         q-page-container
             router-view
-            scroller
+            q-footer
+                q-toolbar.bg-grey-10
+                    q-toolbar-title.flex.justify-center.column.items-center
+                        .text-caption Тестовое задание для <a class='text-accent' href="https://cognive.com/">Cognive</a>
+                        .text-caption от <a class='text-accent' href="https://github.com/TrayHard">Полякова И</a>
+        scroller
 </template>
 
 <script>
@@ -18,6 +23,15 @@ export default {
 </script>
 
 <style lang="sass">
-main
-    background: no-repeat url('~assets/img/naboo.jpg') fixed
+a
+    text-decoration: none
+.q-footer
+    height: 70px
+    display: flex
+    justify-content: center
+    background: none
+    .q-toolbar
+        max-width: $main-width
+        min-width: $main-width
+        width: 100%
 </style>

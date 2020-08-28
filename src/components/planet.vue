@@ -1,29 +1,45 @@
 <template lang="pug">
-    q-card(dark bordered)
-        q-card-section
-            .text-h5 {{ info.name != "unknown" ? info.name : 'Неизвестная планета' }}
-            .text-subtitle2 Добавлен: {{ info.created | moment("DD.MM.YYYY") }}
-            .text-subtitle2 Изменён: {{ info.edited | moment("DD.MM.YYYY") }}
-        q-separator(dark inset)
-        q-card-section
+    .planet-info.q-pa-lg
+        .planet-info__header.flex.justify-between
+            .left.col-2
+                .text-h4.q-mb-md {{ info.name != "unknown" ? info.name : 'Неизвестная планета' }}
+                .text-subtitle2
+                    q-badge.q-mr-xs(outline color="warning" title="Запись добавлена")
+                        q-icon(name="add" round)
+                        | {{ info.created | moment("DD.MM.YYYY") }}
+                    q-badge(outline color="warning" title="Запись изменена")
+                        q-icon(name="edit" round)
+                        | {{ info.edited | moment("DD.MM.YYYY") }}
+            .right.col-auto.flex.row.flex-wrap
+                film-label(v-for="filmcode in filmcodes" :filmcode="filmcode" :key="`film${filmcode}`")
+        q-separator.q-my-md(dark inset)
+        .planet-info__body
             .text-subtitle2 Диаметр планеты: {{ +info.diameter ? splitZeros(+info.diameter) + ' км' : 'неизвестен' }}
+            .text-subtitle2 Население: {{ +info.population ? splitZeros(+info.population) : 'неизвестно' }}
             .text-subtitle2 Часов в сутках: {{ +info.rotation_period ? +info.rotation_period + ' ч' : 'неизвестно' }}
             .text-subtitle2 Дней в году: {{ +info.orbital_period ? +info.orbital_period + ' д' : 'неизвестно' }}
             .text-subtitle2 Гравитация: {{ info.gravity != "unknown" ? info.gravity : 'неизвестно' }}
             .text-subtitle2 Ландшафт: {{ info.terrain }}
             .text-subtitle2 Водный покров: {{ info.surface_water }}
-            .text-subtitle2 Население: {{ +info.population ? splitZeros(+info.population) : 'неизвестно' }}
 </template>
 
 <script>
-    export default {
-        props: {
-            info: {
-                type: Object,
-                default: {}
-            },
+import filmlabel from 'components/film-label.vue';
+
+export default {
+    components: { "film-label": filmlabel },
+    computed: {
+        filmcodes() {
+            return this.info.films.map(el => +el.match(/films\/(\d*)/)[1])
+        }
+    },
+    props: {
+        info: {
+            type: Object,
+            default: {}
         },
-    }
+    },
+}
 </script>
 
 <style lang="sass" scoped>
