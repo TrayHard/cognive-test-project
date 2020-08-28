@@ -5,8 +5,10 @@
             q-footer
                 q-toolbar.bg-grey-10
                     q-toolbar-title.flex.justify-center.column.items-center
-                        .text-caption Тестовое задание для <a class='text-accent' href="https://cognive.com/">Cognive</a>
-                        .text-caption от <a class='text-accent' href="https://github.com/TrayHard">Полякова И</a>
+                        .text-caption
+                            | Тестовое задание для <a class='text-accent' href="https://cognive.com/" target="_blank" >Cognive</a>
+                        .text-caption
+                            | от <a class='text-accent' href="https://github.com/TrayHard" target="_blank">Полякова И</a>
         scroller
 </template>
 
