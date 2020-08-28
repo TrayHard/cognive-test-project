@@ -2,21 +2,18 @@
 
 Cognive Test
 
-## Install the dependencies
+## Установка зависимостей
 ```bash
 yarn
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Режим разработки
 ```bash
-quasar dev
+yarn dev
 ```
 
 
-### Build the app for production
+### Билд для продакшена
 ```bash
-quasar build
+yarn build
 ```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
