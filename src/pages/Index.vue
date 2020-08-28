@@ -162,13 +162,11 @@ export default {
             font-family: ProximaThin, sans-serif
         .body
             .sticky-table
-                /* height or max-height is important */
                 height: calc(100vh - 254px)
 
                 .q-table__top,
                 .q-table__bottom,
                 thead tr:first-child th
-                    /* bg color is important for th; just specify one */
                     background-color: rgb(29,29,29)
 
                 thead tr th
@@ -177,8 +175,6 @@ export default {
                 thead tr:first-child th
                     top: 0
 
-                /* this is when the loading indicator appears */
                 &.q-table--loading thead tr:last-child th
-                    /* height of all previous header rows */
                     top: 48px
 </style>
