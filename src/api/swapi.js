@@ -2,6 +2,7 @@ import axios from 'axios';
 const swapi = axios.create({
     baseURL : process.env.API_URL,
     headers: { 'Accept': 'application/json' },
+    timeout: 5000,
 });
 
 swapi.interceptors.response.use(response => {
@@ -9,7 +10,7 @@ swapi.interceptors.response.use(response => {
     else return response.data
 }, error => {
     console.error(`[Status ${response.status}]:`, { error });
-    return Promise.reject(error);
+    throw error;
 });
 
 const endPoints = {

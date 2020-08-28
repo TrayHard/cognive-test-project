@@ -20,6 +20,7 @@ export default {
             }
         } catch(error) {
             console.error(error);
+            throw new Error('Ошибка при получении данных с API!');
         }
     },
     [actTypes.PROCESS_PAGE]: ({ commit, state }, payload) => {
