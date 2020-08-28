@@ -14,13 +14,13 @@
                 film-label(v-for="filmcode in filmcodes" :filmcode="filmcode" :key="`film${filmcode}`")
         q-separator.q-my-md(dark inset)
         .planet-info__body
-            .text-subtitle2 Диаметр планеты: {{ +info.diameter ? splitZeros(+info.diameter) + ' км' : 'неизвестен' }}
-            .text-subtitle2 Население: {{ +info.population ? splitZeros(+info.population) : 'неизвестно' }}
-            .text-subtitle2 Часов в сутках: {{ +info.rotation_period ? +info.rotation_period + ' ч' : 'неизвестно' }}
-            .text-subtitle2 Дней в году: {{ +info.orbital_period ? +info.orbital_period + ' д' : 'неизвестно' }}
-            .text-subtitle2 Гравитация: {{ info.gravity != "unknown" ? info.gravity : 'неизвестно' }}
-            .text-subtitle2 Ландшафт: {{ info.terrain }}
-            .text-subtitle2 Водный покров: {{ info.surface_water }}
+            .text-subtitle2 Диаметр планеты: {{ +info.diameter ? splitZeros(+info.diameter) + ' км' : '-' }}
+            .text-subtitle2 Население: {{ +info.population ? splitZeros(+info.population) : '-' }}
+            .text-subtitle2 Часов в сутках: {{ +info.rotation_period ? +info.rotation_period + ' ч' : '-' }}
+            .text-subtitle2 Дней в году: {{ +info.orbital_period ? +info.orbital_period + ' д' : '-' }}
+            .text-subtitle2 Гравитация: {{ info.gravity != "unknown" ? info.gravity : '-' }}
+            .text-subtitle2 Ландшафт: {{ info.terrain != "unknown" ? info.terrain : '-' }}
+            .text-subtitle2 Водный покров: {{ info.surface_water != "unknown" ? info.surface_water : '-' }}
 </template>
 
 <script>
